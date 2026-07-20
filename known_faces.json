@@ -1,0 +1,10 @@
+[
+    {
+        "label": "person_1",
+        "fullName": "Иванов Пётр Сергеевич",
+        "phone": "+7 916 123-45-67",
+        "address": "г. Москва, ул. Тверская, д. 12",
+        "social": ["https://vk.com/id123456", "https://ok.ru/profile/7890"],
+        "descriptor": [0.123, -0.456, ...]  // 128 чисел float32
+    }
+]
