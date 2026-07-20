@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Search — пробив по лицу</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #161b22;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        .upload-area {
+            border: 2px dashed #30363d;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin: 20px 0;
+        }
+        .upload-area:hover {
+            border-color: #58a6ff;
+        }
+        #preview {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        #preview img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+        .result-box {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #30363d;
+            display: none;
+        }
+        .status {
+            margin-top: 10px;
+            text-align: center;
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Face Search</h1>
+        <p>Загрузите фото лица для анализа</p>
+        <div class="upload-area" id="uploadArea">
+            <p>📸 Перетащите фото или кликните для выбора</p>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+        <div id="preview"></div>
+        <div id="result" class="result-box"></div>
+        <div id="status" class="status">⏳ Загрузка моделей...</div>
+    </div>
+
+    <!-- ===== ПОДКЛЮЧЕНИЕ БИБЛИОТЕК (CDN) ===== -->
+    <!-- TensorFlow.js (обязателен перед face-api) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0"></script>
+    <!-- face-api.js -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2"></script>
+    <!-- Tesseract.js для OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <!-- EXIF для чтения метаданных -->
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <!-- НАШ ОСНОВНОЙ СКРИПТ -->
+    <script src="script.js"></script>
+</body>
+</html>
